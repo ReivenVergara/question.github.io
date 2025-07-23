@@ -2,43 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Combined Page</title>
   <style>
     html, body {
-      height: auto;
-      margin: 0;
+      margin: 0; padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
     }
-
     .center-screen {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
       gap: 20px;
+      width: 100%;
+      max-width: 600px;
     }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin: 5px;
+    section {
+      display: none;
+      text-align: center;
     }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
+    section.active {
+      display: block;
+    }
+    nav a {
+      margin: 0 10px;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    img {
+      max-width: 200px;
+      height: auto;
     }
   </style>
 </head>
 <body>
+
   <div class="center-screen">
-    <img src="image/s.gif" alt="sponge" srcset="">
-    <h1>Miss moko?</h1>
-    <div class="buttons">
-      <a href="/try/yes.html"><button>Yes</button></a>
-      <a href="/try/no.html"><button>No</button></a>
-    </div>
+
+    <nav>
+      <a onclick="showSection('index')">Home</a>
+      <a onclick="showSection('yes')">Yes</a>
+      <a onclick="showSection('no')">No</a>
+    </nav>
+
+    <section id="index" class="active">
+      <img src="image/p.gif" alt="kilig" />
+      <h1>Ayieee (Index)</h1>
+    </section>
+
+    <section id="yes">
+      <img src="image/p.gif" alt="kilig" />
+      <h1>Ayieee (Yes)</h1>
+    </section>
+
+    <section id="no">
+      <img src="image/i.gif" alt="image of me" />
+      <h1>Awtsss (No)</h1>
+    </section>
+
   </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
